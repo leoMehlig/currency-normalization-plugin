@@ -23,7 +23,8 @@ async function processEvent(event, meta) {
         normalizedCurrency &&
         event?.properties &&
         typeof event.properties[amountProperty] !== 'undefined' &&
-        typeof event.properties[currencyProperty] !== 'undefined'
+        typeof event.properties[currencyProperty] !== 'undefined' &&
+        typeof event.properties[normalizedAmountProperty] == 'undefined'
     ) {
         await fetchRatesIfNeeded(meta)
         const rates = await meta.cache.get('currency_rates')
